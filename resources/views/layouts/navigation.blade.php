@@ -33,6 +33,10 @@
                         {{ __('Stok Keluar') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('transactions.index')" :active="request()->routeIs('transactions.*')">
+                        {{ __('Riwayat Transaksi') }}
+                    </x-nav-link>
+
                 </div>
 
             </div>
@@ -139,6 +143,10 @@
 
             <x-responsive-nav-link :href="route('stock.out')" :active="request()->routeIs('stock.out')">
                 {{ __('Stok Keluar') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('transactions.index')" :active="request()->routeIs('transactions.*')">
+                {{ __('Riwayat Transaksi') }}
             </x-responsive-nav-link>
 
         </div>

@@ -69,4 +69,13 @@ class StockTransactionController extends Controller
         return redirect()->route('items.index')
             ->with('success', 'Stok berhasil dikurangi');
     }
+
+    public function index()
+    {
+         $transactions = StockTransaction::with('item')
+             ->latest()
+             ->get();
+
+         return view('transactions.index', compact('transactions'));
+    }
 }
