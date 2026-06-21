@@ -8,8 +8,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $totalBarang = Item::count();
+        $totalItems = Item::count();
 
-        return view('dashboard', compact('totalBarang'));
+        return view('dashboard', compact('totalItems'));
     }
 }
