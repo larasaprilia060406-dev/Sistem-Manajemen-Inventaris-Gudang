@@ -1,42 +1,89 @@
-<x-app-layout>
+@extends('layouts.app')
 
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Dashboard Inventaris Gudang
-        </h2>
-    </x-slot>
+@section('content')
 
-    <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+<div class="container mt-4">
 
-            <div class="bg-white shadow rounded-lg p-6">
+    <h2 class="mb-4">
+        Dashboard Inventaris Gudang
+    </h2>
 
-                <h3 class="text-2xl font-bold mb-4">
-                    Selamat Datang
-                </h3>
+    <div class="row">
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="col-md-3">
 
-                    <div class="bg-blue-500 text-white p-4 rounded">
-                        <h4>Total Barang</h4>
-                        <p class="text-3xl">{{ $totalItems }}</p>
-                    </div>
+            <div class="card text-white bg-primary mb-3">
 
-                    <div class="bg-green-500 text-white p-4 rounded">
-                        <h4>Barang Masuk</h4>
-                        <p class="text-3xl">0</p>
-                    </div>
+                <div class="card-body">
 
-                    <div class="bg-red-500 text-white p-4 rounded">
-                        <h4>Barang Keluar</h4>
-                        <p class="text-3xl">0</p>
-                    </div>
+                    <h5>Total Barang</h5>
+
+                    <h2>
+                        {{ $totalItems }}
+                    </h2>
 
                 </div>
 
             </div>
 
         </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-white bg-success mb-3">
+
+                <div class="card-body">
+
+                    <h5>Barang Masuk</h5>
+
+                    <h2>
+                        {{ $stockIn }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-white bg-danger mb-3">
+
+                <div class="card-body">
+
+                    <h5>Barang Keluar</h5>
+
+                    <h2>
+                        {{ $stockOut }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card text-white bg-warning mb-3">
+
+                <div class="card-body">
+
+                    <h5>Stok Menipis</h5>
+
+                    <h2>
+                        {{ $lowStock }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 
-</x-app-layout>
+</div>
+
+@endsection
