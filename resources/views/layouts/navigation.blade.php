@@ -70,6 +70,19 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            <x-nav-link :href="route('items.index')" :active="request()->routeIs('items.*')">
+    {{ __('Data Barang') }}
+</x-nav-link>
+
+<x-nav-link :href="route('stock.in')" :active="request()->routeIs('stock.in')">
+    {{ __('Stok Masuk') }}
+</x-nav-link>
+
+<x-nav-link :href="route('stock.out')" :active="request()->routeIs('stock.out')">
+    {{ __('Stok Keluar') }}
+</x-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->
