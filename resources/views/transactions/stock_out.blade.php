@@ -2,64 +2,77 @@
 
 @section('content')
 
-<div class="card shadow">
+<div class="container mt-4">
 
-    <div class="card-header bg-danger text-white">
-        📤 Stok Keluar
-    </div>
+    <div class="card shadow">
 
-    <div class="card-body">
+        <div class="card-header bg-danger text-white">
+            <h4>Stok Keluar</h4>
+        </div>
 
-        <form action="/stock-out" method="POST">
-            @csrf
+        <div class="card-body">
 
-            <div class="mb-3">
-                <label>Barang</label>
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
 
-                <select name="item_id" class="form-control">
+            <form action="{{ route('stock.out.store') }}" method="POST">
 
-                    @foreach($items as $item)
+                @csrf
 
-                    <option value="{{ $item->id }}">
-                        {{ $item->name }}
-                    </option>
+                <div class="mb-3">
+                    <label class="form-label">Barang</label>
 
-                    @endforeach
+                    <select name="item_id" class="form-control" required>
 
-                </select>
-            </div>
+                        <option value="">Pilih Barang</option>
 
-            <div class="mb-3">
-                <label>Jumlah</label>
+                        @foreach($items as $item)
+                            <option value="{{ $item->id }}">
+                                {{ $item->name }}
+                                (Stok: {{ $item->current_stock }})
+                            </option>
+                        @endforeach
 
-                <input
-                    type="number"
-                    name="quantity"
-                    class="form-control">
-            </div>
+                    </select>
+                </div>
 
-            <div class="mb-3">
-                <label>Nomor Referensi</label>
+                <div class="mb-3">
+                    <label class="form-label">Jumlah Keluar</label>
+                    <input type="number"
+                           name="quantity"
+                           class="form-control"
+                           required>
+                </div>
 
-                <input
-                    type="text"
-                    name="reference_no"
-                    class="form-control">
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">Nomor Referensi</label>
+                    <input type="text"
+                           name="reference_no"
+                           class="form-control">
+                </div>
 
-            <div class="mb-3">
-                <label>Catatan</label>
+                <div class="mb-3">
+                    <label class="form-label">Catatan</label>
+                    <textarea name="notes"
+                              class="form-control"></textarea>
+                </div>
 
-                <textarea
-                    name="notes"
-                    class="form-control"></textarea>
-            </div>
+                <button type="submit"
+                        class="btn btn-danger">
+                    Simpan
+                </button>
 
-            <button class="btn btn-danger">
-                Simpan
-            </button>
+                <a href="{{ route('items.index') }}"
+                   class="btn btn-secondary">
+                    Kembali
+                </a>
 
-        </form>
+            </form>
+
+        </div>
 
     </div>
 
