@@ -18,7 +18,6 @@ class Item extends Model
         'description'
     ];
 
-    public $timestamps = false;
 
     public function transactions()
     {
