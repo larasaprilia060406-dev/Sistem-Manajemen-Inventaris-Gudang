@@ -89,6 +89,12 @@ color:white;
 
 }
 
+.active-menu{
+
+background:#2563eb;
+
+}
+
 .topbar{
 
 height:75px;
@@ -139,6 +145,22 @@ padding:0 20px;
 
 }
 
+.role-badge{
+
+background:#2563eb;
+
+padding:5px 12px;
+
+border-radius:20px;
+
+font-size:13px;
+
+color:white;
+
+margin-left:10px;
+
+}
+
 </style>
 
 </head>
@@ -155,7 +177,9 @@ padding:0 20px;
 
 </div>
 
-<a href="{{ route('dashboard') }}">
+
+<a href="{{ route('dashboard') }}"
+class="{{ request()->routeIs('dashboard') ? 'active-menu' : '' }}">
 
 <i class="fa-solid fa-house"></i>
 
@@ -163,7 +187,9 @@ Dashboard
 
 </a>
 
-<a href="{{ route('items.index') }}">
+
+<a href="{{ route('items.index') }}"
+class="{{ request()->routeIs('items.*') ? 'active-menu' : '' }}">
 
 <i class="fa-solid fa-box"></i>
 
@@ -171,7 +197,11 @@ Data Barang
 
 </a>
 
-<a href="{{ route('stock.in') }}">
+
+@if(Auth::user()->role == 'admin')
+
+<a href="{{ route('stock.in') }}"
+class="{{ request()->routeIs('stock.in') ? 'active-menu' : '' }}">
 
 <i class="fa-solid fa-arrow-down"></i>
 
@@ -179,7 +209,9 @@ Stok Masuk
 
 </a>
 
-<a href="{{ route('stock.out') }}">
+
+<a href="{{ route('stock.out') }}"
+class="{{ request()->routeIs('stock.out') ? 'active-menu' : '' }}">
 
 <i class="fa-solid fa-arrow-up"></i>
 
@@ -187,7 +219,11 @@ Stok Keluar
 
 </a>
 
-<a href="{{ route('transactions.index') }}">
+@endif
+
+
+<a href="{{ route('transactions.index') }}"
+class="{{ request()->routeIs('transactions.*') ? 'active-menu' : '' }}">
 
 <i class="fa-solid fa-clock-rotate-left"></i>
 
@@ -195,7 +231,11 @@ Riwayat Transaksi
 
 </a>
 
-<a href="{{ route('users.index') }}">
+
+@if(Auth::user()->role == 'admin')
+
+<a href="{{ route('users.index') }}"
+class="{{ request()->routeIs('users.*') ? 'active-menu' : '' }}">
 
 <i class="fa-solid fa-users"></i>
 
@@ -203,7 +243,11 @@ Manajemen User
 
 </a>
 
-<a href="{{ route('profile.edit') }}">
+@endif
+
+
+<a href="{{ route('profile.edit') }}"
+class="{{ request()->routeIs('profile.*') ? 'active-menu' : '' }}">
 
 <i class="fa-solid fa-user"></i>
 
@@ -211,9 +255,12 @@ Profile
 
 </a>
 
+
 <div class="logout">
 
-<form method="POST" action="{{ route('logout') }}">
+<form method="POST"
+
+action="{{ route('logout') }}">
 
 @csrf
 
@@ -230,6 +277,8 @@ Logout
 </div>
 
 </div>
+
+
 
 <div class="content">
 
@@ -251,9 +300,16 @@ placeholder="Cari sesuatu...">
 
 <strong>{{ Auth::user()->name }}</strong>
 
+<span class="role-badge">
+
+{{ ucfirst(Auth::user()->role) }}
+
+</span>
+
 </div>
 
 </div>
+
 
 <div class="main">
 
