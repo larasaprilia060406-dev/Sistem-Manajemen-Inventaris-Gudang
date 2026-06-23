@@ -2,24 +2,51 @@
 
 @section('content')
 
-<div class="container mt-4">
+<div class="container-fluid">
 
-    <h2 class="mb-4">
-        Dashboard Inventaris Gudang
-    </h2>
+    <!-- Header -->
 
-    <div class="row">
+    <div class="row mb-4">
+
+        <div class="col-md-8">
+
+            <h2 class="fw-bold">
+
+                Dashboard Inventra
+
+            </h2>
+
+            <p class="text-secondary">
+
+                Kelola inventaris gudang dengan lebih mudah.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Statistik -->
+
+    <div class="row g-4 mb-4">
 
         <div class="col-md-3">
 
-            <div class="card text-white bg-primary mb-3">
+            <div class="card border-0 shadow-sm">
 
                 <div class="card-body">
 
-                    <h5>Total Barang</h5>
+                    <small class="text-muted">
 
-                    <h2>
+                        Total Barang
+
+                    </small>
+
+                    <h2 class="fw-bold mt-2">
+
                         {{ $totalItems }}
+
                     </h2>
 
                 </div>
@@ -28,16 +55,23 @@
 
         </div>
 
+
         <div class="col-md-3">
 
-            <div class="card text-white bg-success mb-3">
+            <div class="card border-0 shadow-sm">
 
                 <div class="card-body">
 
-                    <h5>Barang Masuk</h5>
+                    <small class="text-muted">
 
-                    <h2>
+                        Barang Masuk
+
+                    </small>
+
+                    <h2 class="fw-bold text-success mt-2">
+
                         {{ $stockIn }}
+
                     </h2>
 
                 </div>
@@ -46,16 +80,23 @@
 
         </div>
 
+
         <div class="col-md-3">
 
-            <div class="card text-white bg-danger mb-3">
+            <div class="card border-0 shadow-sm">
 
                 <div class="card-body">
 
-                    <h5>Barang Keluar</h5>
+                    <small class="text-muted">
 
-                    <h2>
+                        Barang Keluar
+
+                    </small>
+
+                    <h2 class="fw-bold text-danger mt-2">
+
                         {{ $stockOut }}
+
                     </h2>
 
                 </div>
@@ -64,16 +105,23 @@
 
         </div>
 
+
         <div class="col-md-3">
 
-            <div class="card text-white bg-warning mb-3">
+            <div class="card border-0 shadow-sm">
 
                 <div class="card-body">
 
-                    <h5>Stok Menipis</h5>
+                    <small class="text-muted">
 
-                    <h2>
+                        Stok Menipis
+
+                    </small>
+
+                    <h2 class="fw-bold text-warning mt-2">
+
                         {{ $lowStock }}
+
                     </h2>
 
                 </div>
@@ -84,6 +132,107 @@
 
     </div>
 
-</div>
 
+    <!-- Baris Kedua -->
+
+    <div class="row g-4">
+
+        <div class="col-md-8">
+
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold mb-4">
+
+                        📦 Ringkasan Inventaris
+
+                    </h5>
+
+                    <table class="table">
+
+                        <tr>
+
+                            <td>Total Barang</td>
+
+                            <td>{{ $totalItems }}</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Barang Masuk</td>
+
+                            <td>{{ $stockIn }}</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Barang Keluar</td>
+
+                            <td>{{ $stockOut }}</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Stok Menipis</td>
+
+                            <td>{{ $lowStock }}</td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-body">
+
+                    <h5 class="fw-bold mb-4">
+
+                        ⚡ Aktivitas Hari Ini
+
+                    </h5>
+
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">
+
+                            Barang masuk diperbarui
+
+                        </li>
+
+                        <li class="list-group-item">
+
+                            Barang keluar diperbarui
+
+                        </li>
+
+                        <li class="list-group-item">
+
+                            Data inventaris aktif
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 @endsection
