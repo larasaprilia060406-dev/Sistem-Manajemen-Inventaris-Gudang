@@ -50,7 +50,7 @@
 
 <div class="sidebar">
 
-    <h3>📦 Inventaris Gudang</h3>
+    <h3>📦 INVENTRA </h3>
 
     <a href="{{ route('dashboard') }}">
         🏠 Dashboard
