@@ -2,64 +2,146 @@
 
 @section('content')
 
-<div class="card shadow">
+<div class="container-fluid">
 
-    <div class="card-header bg-success text-white">
-        📥 Stok Masuk
+    <div class="mb-4">
+
+        <h2 class="fw-bold">
+
+            📥 Stok Masuk
+
+        </h2>
+
+        <p class="text-secondary">
+
+            Tambahkan barang yang masuk ke gudang.
+
+        </p>
+
     </div>
 
-    <div class="card-body">
 
-        <form action="/stock-in" method="POST">
-            @csrf
+    <div class="card border-0 shadow-sm">
 
-            <div class="mb-3">
-                <label>Barang</label>
+        <div class="card-body p-4">
 
-                <select name="item_id" class="form-control">
+            <form action="{{ route('stock.in.store') }}"
+                  method="POST">
 
-                    @foreach($items as $item)
+                @csrf
 
-                    <option value="{{ $item->id }}">
-                        {{ $item->name }}
-                    </option>
 
-                    @endforeach
+                <div class="row">
 
-                </select>
-            </div>
+                    <div class="col-md-6 mb-4">
 
-            <div class="mb-3">
-                <label>Jumlah</label>
+                        <label class="form-label fw-semibold">
 
-                <input
-                    type="number"
-                    name="quantity"
-                    class="form-control">
-            </div>
+                            Barang
 
-            <div class="mb-3">
-                <label>Nomor Referensi</label>
+                        </label>
 
-                <input
-                    type="text"
-                    name="reference_no"
-                    class="form-control">
-            </div>
+                        <select name="item_id"
 
-            <div class="mb-3">
-                <label>Catatan</label>
+                            class="form-select">
 
-                <textarea
-                    name="notes"
-                    class="form-control"></textarea>
-            </div>
+                            @foreach($items as $item)
 
-            <button class="btn btn-success">
-                Simpan
-            </button>
+                            <option value="{{ $item->id }}">
 
-        </form>
+                                {{ $item->name }}
+
+                            </option>
+
+                            @endforeach
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-semibold">
+
+                            Jumlah
+
+                        </label>
+
+                        <input type="number"
+
+                            name="quantity"
+
+                            class="form-control"
+
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-semibold">
+
+                            Nomor Referensi
+
+                        </label>
+
+                        <input type="text"
+
+                            name="reference_no"
+
+                            class="form-control">
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-4">
+
+                        <label class="form-label fw-semibold">
+
+                            Catatan
+
+                        </label>
+
+                        <textarea
+
+                            name="notes"
+
+                            rows="3"
+
+                            class="form-control"></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="d-flex gap-3">
+
+                    <button class="btn btn-success">
+
+                        💾 Simpan Data
+
+                    </button>
+
+                    <a href="{{ route('dashboard') }}"
+
+                        class="btn btn-outline-secondary">
+
+                        ← Kembali
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
 
     </div>
 
