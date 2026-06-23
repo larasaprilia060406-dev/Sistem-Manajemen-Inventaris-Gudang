@@ -149,6 +149,10 @@
                 {{ __('Riwayat Transaksi') }}
             </x-responsive-nav-link>
 
+            <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                {{ __('Manajemen User') }}
+            </x-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StockTransactionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,6 +19,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/transactions', [StockTransactionController::class, 'index'])
     ->name('transactions.index');
+
+    // User Management
+    Route::resource('users', UserController::class);
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/stock-out', [StockTransactionController::class, 'createOut'])->name('stock.out');
     Route::post('/stock-out', [StockTransactionController::class, 'storeOut'])->name('stock.out.store');
 
+    
 });
 
 require __DIR__.'/auth.php';
