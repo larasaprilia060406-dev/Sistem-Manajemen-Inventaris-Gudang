@@ -604,7 +604,7 @@
 
             <div class="col-md-6 text-end">
 
-                <a href="#"
+                <a href="{{ route('reports.pdf') }}"
                    class="btn btn-danger">
 
                     <i class="fa-solid fa-file-pdf"></i>

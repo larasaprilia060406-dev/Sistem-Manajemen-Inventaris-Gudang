@@ -29,6 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/reports', [ReportController::class, 'index'])
         ->name('reports.index');
 
+    Route::get('/reports/pdf', [ReportController::class, 'exportPdf'])
+    ->name('reports.pdf');
+
     // Profile
     Route::get('/profile',
         [ProfileController::class, 'edit']

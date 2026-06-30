@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\StockTransaction;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportController extends Controller
 {
@@ -84,4 +85,38 @@ class ReportController extends Controller
             'barangMenipis'
         ));
     }
+
+    public function exportPdf()
+{
+    $items = Item::all();
+
+    $transactions = StockTransaction::with('item')
+        ->latest()
+        ->get();
+
+    $totalBarang = Item::count();
+
+    $totalStok = Item::sum('current_stock');
+
+    $totalTransaksi = $transactions->count();
+
+    $barangMenipis = Item::whereColumn(
+        'current_stock',
+        '<=',
+        'min_stock'
+    )->count();
+
+    $pdf = Pdf::loadView('reports.pdf.report', compact(
+        'items',
+        'transactions',
+        'totalBarang',
+        'totalStok',
+        'totalTransaksi',
+        'barangMenipis'
+    ));
+
+    $pdf->setPaper('A4', 'landscape');
+
+    return $pdf->download('laporan-inventaris.pdf');
+}
 }
