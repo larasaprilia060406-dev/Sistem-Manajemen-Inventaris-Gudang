@@ -22,21 +22,17 @@ overflow-x:hidden;
 }
 
 .sidebar{
+    width:260px;
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+    background:#111827;
+    color:white;
 
-width:260px;
-
-height:100vh;
-
-position:fixed;
-
-left:0;
-
-top:0;
-
-background:#111827;
-
-color:white;
-
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
 }
 
 .logo{
@@ -134,15 +130,8 @@ width:350px;
 }
 
 .logout{
-
-position:absolute;
-
-bottom:20px;
-
-width:100%;
-
-padding:0 20px;
-
+    margin-top:auto;
+    padding:20px;
 }
 
 .role-badge{
@@ -230,6 +219,14 @@ class="{{ request()->routeIs('transactions.*') ? 'active-menu' : '' }}">
 Riwayat Transaksi
 
 </a>
+
+@if(Auth::user()->role == 'admin')
+<a href="{{ route('reports.index') }}"
+class="{{ request()->routeIs('reports.*') ? 'active-menu' : '' }}">
+    <i class="fa-solid fa-file-lines"></i>
+    Laporan
+</a>
+@endif
 
 
 @if(Auth::user()->role == 'admin')

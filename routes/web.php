@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StockTransactionController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-
 Route::middleware('auth')->group(function () {
 
     // Dashboard
@@ -25,6 +25,9 @@ Route::middleware('auth')->group(function () {
         [StockTransactionController::class, 'index']
     )->name('transactions.index');
 
+    // ===== Laporan =====
+    Route::get('/reports', [ReportController::class, 'index'])
+        ->name('reports.index');
 
     // Profile
     Route::get('/profile',
@@ -64,6 +67,7 @@ Route::middleware('auth')->group(function () {
         [StockTransactionController::class, 'storeOut']
     )->name('stock.out.store');
 
+    
 });
 
 require __DIR__.'/auth.php';
