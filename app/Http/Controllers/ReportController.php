@@ -2,27 +2,78 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\StockTransaction;
 
 class ReportController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // Data Barang
         $items = Item::all();
 
-        $transactions = StockTransaction::with('item')
-                        ->latest()
-                        ->get();
+        // Query Transaksi
+        $transactions = StockTransaction::with('item');
+
+        // ===========================
+        // Filter Tanggal Awal
+        // ===========================
+        if ($request->filled('start_date')) {
+            $transactions->whereDate(
+                'transaction_date',
+                '>=',
+                $request->start_date
+            );
+        }
+
+        // ===========================
+        // Filter Tanggal Akhir
+        // ===========================
+        if ($request->filled('end_date')) {
+            $transactions->whereDate(
+                'transaction_date',
+                '<=',
+                $request->end_date
+            );
+        }
+
+        // ===========================
+        // Filter Jenis
+        // ===========================
+        if ($request->filled('jenis')) {
+            $transactions->where(
+                'transaction_type',
+                $request->jenis
+            );
+        }
+
+        // ===========================
+        // Filter Barang
+        // ===========================
+        if ($request->filled('barang')) {
+            $transactions->where(
+                'item_id',
+                $request->barang
+            );
+        }
+
+        $transactions = $transactions
+            ->latest()
+            ->get();
 
         // Statistik
         $totalBarang = Item::count();
 
         $totalStok = Item::sum('current_stock');
 
-        $totalTransaksi = StockTransaction::count();
+        $totalTransaksi = $transactions->count();
 
-        $barangMenipis = Item::whereColumn('current_stock', '<=', 'min_stock')->count();
+        $barangMenipis = Item::whereColumn(
+            'current_stock',
+            '<=',
+            'min_stock'
+        )->count();
 
         return view('reports.index', compact(
             'items',

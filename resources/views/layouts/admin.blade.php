@@ -110,17 +110,15 @@ box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
 
 .content{
-
-margin-left:260px;
-
-min-height:100vh;
-
+    margin-left:260px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
 }
 
 .main{
-
-padding:30px;
-
+    flex:1;
+    padding:30px;
 }
 
 .search-box{
@@ -135,19 +133,12 @@ width:350px;
 }
 
 .role-badge{
-
-background:#2563eb;
-
-padding:5px 12px;
-
-border-radius:20px;
-
-font-size:13px;
-
-color:white;
-
-margin-left:10px;
-
+    background:#2563eb;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:13px;
+    color:white;
+    margin-left:10px;
 }
 
 /* ===============================
@@ -155,7 +146,7 @@ margin-left:10px;
 =================================*/
 
 .stats-card{
-    height:160px;
+    height:135px;
     border:none;
     border-radius:15px;
     box-shadow:0 8px 20px rgba(0,0,0,.12);
@@ -179,20 +170,48 @@ margin-left:10px;
     margin-bottom:10px;
 }
 
-.stats-card h5{
-    min-height:50px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+.stats-card h6{
+    font-size:18px;
     font-weight:600;
-    margin-bottom:10px;
+    margin-top:8px;
 }
 
 .stats-card h2{
-    font-size:40px;
+    font-size:32px;
     font-weight:bold;
     margin:0;
+}
+
+.table thead th{
+
+background:#f8fafc;
+
+font-weight:600;
+
+}
+
+.card{
+
+border-radius:15px;
+
+}
+
+.card-header{
+
+font-weight:600;
+
+}
+
+.btn{
+
+border-radius:10px;
+
+}
+
+.table{
+
+font-size:14px;
+
 }
 
 </style>
