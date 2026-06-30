@@ -150,6 +150,51 @@ margin-left:10px;
 
 }
 
+/* ===============================
+   Statistik Laporan
+=================================*/
+
+.stats-card{
+    height:160px;
+    border:none;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    transition:.3s;
+}
+
+.stats-card:hover{
+    transform:translateY(-5px);
+}
+
+.stats-card .card-body{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.stats-card i{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.stats-card h5{
+    min-height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.stats-card h2{
+    font-size:40px;
+    font-weight:bold;
+    margin:0;
+}
+
 </style>
 
 </head>

@@ -4,24 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\StockTransaction;
-use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
     public function index()
     {
-        // Ambil semua data barang
         $items = Item::all();
 
-        // Ambil semua transaksi beserta data barang
         $transactions = StockTransaction::with('item')
-            ->latest()
-            ->get();
+                        ->latest()
+                        ->get();
 
-        // Kirim ke halaman laporan
+        // Statistik
+        $totalBarang = Item::count();
+
+        $totalStok = Item::sum('current_stock');
+
+        $totalTransaksi = StockTransaction::count();
+
+        $barangMenipis = Item::whereColumn('current_stock', '<=', 'min_stock')->count();
+
         return view('reports.index', compact(
             'items',
-            'transactions'
+            'transactions',
+            'totalBarang',
+            'totalStok',
+            'totalTransaksi',
+            'barangMenipis'
         ));
     }
 }

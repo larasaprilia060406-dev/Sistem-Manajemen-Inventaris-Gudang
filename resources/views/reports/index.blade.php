@@ -10,6 +10,45 @@
             Laporan Inventaris
         </h2>
 
+<div class="row g-4 mb-4">
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card bg-primary text-white stats-card">
+            <div class="card-body text-center">
+                <h5>Total Barang</h5>
+                <h1>{{ $totalBarang }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card bg-success text-white stats-card">
+            <div class="card-body text-center">
+                <h5>Total Stok</h5>
+                <h1>{{ $totalStok }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card bg-warning text-dark stats-card">
+            <div class="card-body text-center">
+                <h5>Total Transaksi</h5>
+                <h1>{{ $totalTransaksi }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card bg-danger text-white stats-card">
+            <div class="card-body text-center">
+                <h5>Barang Menipis</h5>
+                <h1>{{ $barangMenipis }}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
         <p class="text-muted">
             Rekap data barang dan transaksi inventaris gudang.
         </p>
